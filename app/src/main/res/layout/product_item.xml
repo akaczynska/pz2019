@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/product_image"
+        android:layout_centerVertical="true"
+        android:src="@mipmap/ic_launcher"
+        android:contentDescription="@string/image_product"/>
+
+    <TextView
+        android:id="@+id/textViewProduct"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="9dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/product_image"
+        android:text="@string/product_name"
+        android:textSize="20sp"
+        android:layout_toRightOf="@+id/product_image" />
+
+    <TextView
+        android:id="@+id/textViewPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/textViewProduct"
+        android:layout_toRightOf="@+id/textViewProduct"
+        android:text="@string/product_price"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/textViewTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewProduct"
+        android:layout_marginStart="57dp"
+        android:layout_marginLeft="57dp"
+        android:layout_marginTop="0dp"
+        android:layout_toEndOf="@+id/product_image"
+        android:layout_toRightOf="@+id/product_image"
+        android:text="@string/product_time"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/buttonAuction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginLeft="35dp"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@+id/textViewPrice"
+        android:layout_toRightOf="@+id/textViewPrice"
+        android:text="@string/auction" />
+
+</RelativeLayout>
