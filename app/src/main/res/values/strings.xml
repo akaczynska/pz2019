@@ -5,4 +5,6 @@
     <string name="product_price">Cena</string>
     <string name="product_time">Czas</string>
     <string name="auction">Licytuj</string>
+    <string name="navigation_draver_close">Close Navigation Draver</string>
+    <string name="navigation_draver_open">Open Navigation Draver</string>
 </resources>
