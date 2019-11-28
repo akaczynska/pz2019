@@ -12,6 +12,12 @@ public class ProductInformation {
         this.productTime = productTime;
         this.imageURL = imageURL;
     }
+    public ProductInformation(){
+        productName = "Empty";
+        productPrice = "Empty";
+        productTime = "Empty";
+        imageURL = "Empty";
+    }
 
     public String getProductName() {
         return productName;

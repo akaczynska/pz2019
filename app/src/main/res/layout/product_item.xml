@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="#99BFAA">
 
     <ImageView
         android:layout_width="50dp"
@@ -28,9 +29,8 @@
         android:id="@+id/textViewPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginLeft="35dp"
         android:layout_marginTop="10dp"
         android:layout_toEndOf="@+id/textViewProduct"
         android:layout_toRightOf="@+id/textViewProduct"
@@ -54,11 +54,12 @@
         android:id="@+id/buttonAuction"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="35dp"
-        android:layout_marginLeft="35dp"
-        android:layout_centerVertical="true"
-        android:layout_toEndOf="@+id/textViewPrice"
-        android:layout_toRightOf="@+id/textViewPrice"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="324dp"
+        android:layout_marginLeft="324dp"
+        android:layout_marginTop="8dp"
         android:text="@string/auction" />
 
 </RelativeLayout>
