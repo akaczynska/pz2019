@@ -11,16 +11,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Nick"/>
-    <TextView
-        android:id="@+id/textViewAppName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="100dp"
-        android:text="Auction4u"/>
+
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_notifications_black_24dp"
-        android:layout_marginLeft="100dp"/>
+        android:layout_marginLeft="350dp"/>
+
 
 </androidx.appcompat.widget.Toolbar>
