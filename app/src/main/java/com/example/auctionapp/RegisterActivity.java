@@ -6,7 +6,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import java.sql.Connection;
+
 public class RegisterActivity extends AppCompatActivity {
+
+    public Connection con;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

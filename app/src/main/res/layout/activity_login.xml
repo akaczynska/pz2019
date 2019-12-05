@@ -8,7 +8,7 @@
     tools:context=".LoginActivity">
 
     <EditText
-        android:id="@+id/editText_email"
+        android:id="@+id/editText_login"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginStart="15dp"
@@ -17,8 +17,8 @@
         android:background="@drawable/edit_round"
         android:drawableLeft="@drawable/ic_mail_24dp"
         android:ems="10"
-        android:hint="E-mail"
-        android:inputType="textEmailAddress"
+        android:hint="Login"
+        android:inputType="text"
         android:textColorHint="@color/colorText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -41,7 +41,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_email" />
+        app:layout_constraintTop_toBottomOf="@+id/editText_login" />
 
     <Button
         android:id="@+id/login_button"

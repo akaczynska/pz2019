@@ -4,19 +4,19 @@ public class ProductInformation {
     private String productName;
     private String productPrice;
     private String productTime;
-    private String imageURL;
+    private String productDescription;
 
     public ProductInformation(String productName, String productPrice, String productTime, String imageURL) {
         this.productName = productName;
         this.productPrice = productPrice;
         this.productTime = productTime;
-        this.imageURL = imageURL;
+        this.productDescription = imageURL;
     }
     public ProductInformation(){
         productName = "Empty";
         productPrice = "Empty";
         productTime = "Empty";
-        imageURL = "Empty";
+        productDescription = "Empty";
     }
 
     public String getProductName() {
@@ -43,11 +43,4 @@ public class ProductInformation {
         this.productTime = productTime;
     }
 
-    public String getImageURL() {
-        return imageURL;
-    }
-
-    public void setImageURL(String imageURL) {
-        this.imageURL = imageURL;
-    }
 }
