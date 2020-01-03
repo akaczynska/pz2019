@@ -5,188 +5,156 @@
     android:layout_height="match_parent">
 
     <TextView
+        android:id="@+id/textViewStart"
+        android:layout_width="308dp"
+        android:layout_height="26dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="54dp"
+        android:layout_marginLeft="54dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginRight="48dp"
+        android:layout_marginBottom="670dp"
+        android:text="Put your product for auction"
+        android:textSize="20sp" />
+
+    <TextView
         android:id="@+id/textViewProductName"
         android:layout_width="132dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="29dp"
-        android:layout_marginLeft="29dp"
-        android:layout_marginEnd="248dp"
-        android:layout_marginRight="248dp"
-        android:layout_marginBottom="578dp"
+        android:layout_marginStart="26dp"
+        android:layout_marginLeft="26dp"
+        android:layout_marginTop="66dp"
+        android:layout_marginEnd="251dp"
+        android:layout_marginRight="251dp"
         android:text="Product Name" />
 
-    <TextView
-        android:id="@+id/textViewStart"
-        android:layout_width="296dp"
-        android:layout_height="90dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="53dp"
-        android:layout_marginLeft="53dp"
-        android:layout_marginEnd="62dp"
-        android:layout_marginRight="62dp"
-        android:layout_marginBottom="606dp"
-        android:text="Put your product for auction"
-        android:textSize="30sp" />
-
-    <TextView
-        android:id="@+id/textViewDescription"
-        android:layout_width="147dp"
+    <EditText
+        android:id="@+id/editTextProductName"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/editTextDescription"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginStart="28dp"
-        android:layout_marginLeft="28dp"
-        android:layout_marginEnd="236dp"
-        android:layout_marginRight="236dp"
-        android:layout_marginBottom="17dp"
-        android:text="Description" />
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="94dp"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/editTextDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="34dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="176dp"
+        android:ems="10"
+        android:inputType="textPersonName" />
 
     <TextView
         android:id="@+id/textViewStartingPrice"
         android:layout_width="147dp"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/editTextStartingPrice"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginEnd="232dp"
-        android:layout_marginRight="232dp"
-        android:layout_marginBottom="18dp"
+        android:layout_marginStart="27dp"
+        android:layout_marginLeft="27dp"
+        android:layout_marginTop="222dp"
+        android:layout_marginEnd="237dp"
+        android:layout_marginRight="237dp"
         android:text="Starting Price" />
 
     <TextView
         android:id="@+id/textViewFinalPrice"
         android:layout_width="147dp"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/editTextFinalPrice"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginEnd="232dp"
-        android:layout_marginRight="232dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginStart="205dp"
+        android:layout_marginLeft="205dp"
+        android:layout_marginTop="222dp"
+        android:layout_marginEnd="59dp"
+        android:layout_marginRight="59dp"
         android:text="Final Price" />
-
-    <TextView
-        android:id="@+id/textViewTime"
-        android:layout_width="147dp"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/editTextTime"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginStart="35dp"
-        android:layout_marginLeft="35dp"
-        android:layout_marginEnd="229dp"
-        android:layout_marginRight="229dp"
-        android:layout_marginBottom="13dp"
-        android:text="Time" />
-
-    <EditText
-        android:id="@+id/editTextProductName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/textViewProductName"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_marginStart="29dp"
-        android:layout_marginLeft="29dp"
-        android:layout_marginBottom="-82dp"
-        android:ems="10"
-        android:inputType="textPersonName" />
-
-    <TextView
-    android:id="@+id/textViewDecreasePrice"
-    android:layout_width="147dp"
-    android:layout_height="wrap_content"
-    android:layout_alignParentEnd="true"
-    android:layout_alignParentRight="true"
-    android:layout_alignParentBottom="true"
-    android:layout_marginStart="13dp"
-    android:layout_marginLeft="13dp"
-    android:layout_marginEnd="4dp"
-    android:layout_marginRight="4dp"
-    android:layout_marginBottom="320dp"
-    android:layout_toEndOf="@+id/editTextFinalPrice"
-    android:layout_toRightOf="@+id/editTextFinalPrice"
-    android:text="That price will decrease by 5$ per 5 minutes." />
-
-    <EditText
-        android:id="@+id/editTextDescription"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="31dp"
-        android:layout_marginLeft="31dp"
-        android:layout_marginBottom="420dp"
-        android:ems="10"
-        android:inputType="textPersonName" />
-
-    <EditText
-        android:id="@+id/editTextStartingPrice"
-        android:layout_width="202dp"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/textViewFinalPrice"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginBottom="10dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="1000" />
-
-    <TextView
-        android:id="@+id/textViewDays"
-        android:layout_width="147dp"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/buttonPut"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="5dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginEnd="196dp"
-        android:layout_marginRight="196dp"
-        android:layout_marginBottom="156dp"
-        android:layout_toEndOf="@+id/editTextTime"
-        android:layout_toRightOf="@+id/editTextTime"
-        android:text="Days" />
 
     <EditText
         android:id="@+id/editTextFinalPrice"
         android:layout_width="203dp"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/buttonPut"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginBottom="151dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="203dp"
+        android:layout_marginLeft="203dp"
+        android:layout_marginTop="247dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="500" />
+
+    <EditText
+        android:id="@+id/editTextStartingPrice"
+        android:layout_width="87dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="26dp"
+        android:layout_marginLeft="26dp"
+        android:layout_marginTop="248dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="1000" />
+
+    <TextView
+        android:id="@+id/textViewDecreasePrice"
+        android:layout_width="147dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="98dp"
+        android:layout_marginLeft="98dp"
+        android:layout_marginTop="293dp"
+        android:layout_marginEnd="166dp"
+        android:layout_marginRight="166dp"
+        android:text="That price will decrease by 5$ per 5 minutes." />
+
+    <TextView
+        android:id="@+id/textViewCategory"
+        android:layout_width="86dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="22dp"
+        android:layout_marginLeft="22dp"
+        android:layout_marginTop="352dp"
+        android:layout_marginEnd="303dp"
+        android:layout_marginRight="303dp"
+        android:text="Time" />
 
     <EditText
         android:id="@+id/editTextTime"
@@ -194,13 +162,29 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginBottom="143dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="18dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="376dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="2" />
+
+    <TextView
+        android:id="@+id/textViewDays"
+        android:layout_width="42dp"
+        android:layout_height="19dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="384dp"
+        android:layout_marginEnd="313dp"
+        android:layout_marginRight="313dp"
+        android:layout_toEndOf="@+id/editTextTime"
+        android:layout_toRightOf="@+id/editTextTime"
+        android:text="Days" />
 
     <Button
         android:id="@+id/buttonPut"
@@ -208,14 +192,91 @@
         android:layout_height="37dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="35dp"
-        android:layout_marginLeft="35dp"
-        android:layout_marginEnd="37dp"
-        android:layout_marginRight="37dp"
-        android:layout_marginBottom="41dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginLeft="13dp"
+        android:layout_marginTop="421dp"
+        android:layout_marginEnd="59dp"
+        android:layout_marginRight="59dp"
         android:text="Put for auction" />
+
+
+
+    <TextView
+        android:id="@+id/textViewTime"
+        android:layout_width="108dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="121dp"
+        android:layout_marginLeft="121dp"
+        android:layout_marginTop="352dp"
+        android:layout_marginEnd="182dp"
+        android:layout_marginRight="182dp"
+        android:text="Category" />
+
+    <TextView
+        android:id="@+id/textViewSubcategory"
+        android:layout_width="102dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="121dp"
+        android:layout_marginLeft="121dp"
+        android:layout_marginTop="383dp"
+        android:layout_marginEnd="188dp"
+        android:layout_marginRight="188dp"
+        android:visibility="invisible"
+        android:text="Subcategory" />
+
+    <Spinner
+        android:id="@+id/spinnerCategory"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="230dp"
+        android:layout_marginLeft="230dp"
+        android:layout_marginTop="350dp" />
+
+    <Spinner
+        android:id="@+id/spinnerSubcategory"
+        android:layout_width="174dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="226dp"
+        android:layout_marginLeft="226dp"
+        android:layout_marginTop="380dp"
+        android:visibility="invisible"/>
+
+    <TextView
+        android:id="@+id/textViewDescription"
+        android:layout_width="147dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editTextProductName"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginEnd="239dp"
+        android:layout_marginRight="239dp"
+        android:text="Description" />
+
 
 </RelativeLayout>

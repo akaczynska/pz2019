@@ -45,7 +45,7 @@ public class BidFragment extends Fragment {
        ProductInformation p2 = new ProductInformation();
        ProductInformation p3 = new ProductInformation();
 
-        p1.setProductName("Chocolate");
+   /*     p1.setProductName("Chocolate");
         p1.setProductPrice("2.5$");
         p1.setProductTime("3 days left");
         p2.setProductName("Apple");
@@ -60,6 +60,6 @@ public class BidFragment extends Fragment {
         listProducts.add(p3);
 
         productAdapter = new ProductAdapter(getContext(),listProducts);
-        recyclerView.setAdapter(productAdapter);
+        recyclerView.setAdapter(productAdapter);*/
     }
 }
