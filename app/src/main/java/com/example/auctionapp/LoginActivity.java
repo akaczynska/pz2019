@@ -16,6 +16,8 @@ import java.sql.Statement;
 
 public class LoginActivity extends AppCompatActivity {
 
+    public final static String EXTRA_LOGIN = "";
+
     Connection con;
     ConnectionClass connectionClass;
     EditText editText_login;
@@ -36,7 +38,9 @@ public class LoginActivity extends AppCompatActivity {
 
     public void openAuction (View view) {
         if (checkLogin()) {
-            startActivity(new Intent(this, AuctionActivity.class));
+            Intent intent = new Intent(this, AuctionActivity.class);
+            intent.putExtra(EXTRA_LOGIN, login);
+            startActivity(intent);
         }
     }
 

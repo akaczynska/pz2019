@@ -41,9 +41,9 @@ public class BidFragment extends Fragment {
     }
 
    private void readProducts(){
-       ProductInformation p1 = new ProductInformation();
-       ProductInformation p2 = new ProductInformation();
-       ProductInformation p3 = new ProductInformation();
+      // ProductInformation p1 = new ProductInformation();
+     //  ProductInformation p2 = new ProductInformation();
+       //ProductInformation p3 = new ProductInformation();
 
    /*     p1.setProductName("Chocolate");
         p1.setProductPrice("2.5$");

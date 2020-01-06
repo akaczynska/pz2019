@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.auctionapp.ConnectionClass;
+import com.example.auctionapp.Model.ProductInformation;
 import com.example.auctionapp.R;
 
 import java.sql.Connection;
@@ -55,6 +56,9 @@ public class SellFragment extends Fragment implements View.OnClickListener {
     List<String> listCategory = new ArrayList<String>();
     List<String> listSubcategory = new ArrayList<String>();
 
+    int id_category = 24007;
+    String login;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -85,22 +89,53 @@ public class SellFragment extends Fragment implements View.OnClickListener {
     public void putProductForAuction(){
         String productName = editTextProductName.getText().toString();
         String description = editTextDescription.getText().toString().trim();
-        String startingPrice = editTextStartingPrice.getText().toString().trim();
-        String finalPrice = editTextFinalPrice.getText().toString().trim();
+        String startingPriceString = editTextStartingPrice.getText().toString().trim();
+        String finalPriceString = editTextFinalPrice.getText().toString().trim();
         String time = editTextTime.getText().toString().trim();
         if(productName.matches("")) {
             Toast.makeText(context, "Enter product name", Toast.LENGTH_LONG).show();
         }
-        else if(startingPrice.matches("")){
+        else if(startingPriceString.matches("")){
             Toast.makeText(context, "Enter starting price", Toast.LENGTH_LONG).show();
         }
-        else if(finalPrice.matches("")){
+        else if(finalPriceString.matches("")){
             Toast.makeText(context, "Enter final price", Toast.LENGTH_LONG).show();
         }
-        else if(time.matches("")){
+        else if(time.matches("")) {
             Toast.makeText(context, "Enter time", Toast.LENGTH_LONG).show();
         }
-        else if(){
+        else{
+           //ProductInformation productInformation = new ProductInformation(1, productName, description, startingPrice, finalPrice, 0, 0, login, "null", time);
+                float startingPrice = Float.valueOf(startingPriceString);
+                float finalPrice = Float.valueOf(finalPriceString);
+            try {
+                if (con == null) {
+                    Toast.makeText(context, "Check your internet access!", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    String query =  "DECLARE @Result TINYINT;\n" +
+                            "\n" + "EXEC @Result = dbo.CreateProduct @NewProductName = '" + productName +
+                            "', @NewDescription = '" + description + "', @NewStartingPrice = "+
+                            startingPrice + ", @NewFinishPrice =" + finalPrice +
+                            ", @NewStartDate ='2020-01-01', @NewFinishDate = '2020-01-03', @NewSold = 0, @NewIdCategory ="
+                            + id_category + ", @NewSellerLogin = null, @NewBuyerLogin = null;" +
+                            "SELECT @Result Status;";
+                    Statement stmt = con.createStatement();
+                    ResultSet rs = stmt.executeQuery(query);
+                    if(rs.next())
+                    {
+                            Toast.makeText(context,"Adding product successful", Toast.LENGTH_LONG).show();
+                    }
+                    else
+                    {
+                        Toast.makeText(context,"Adding product unsuccessful", Toast.LENGTH_LONG).show();
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Toast.makeText(context,e.getMessage(), Toast.LENGTH_LONG).show();
+            }
 
         }
     }

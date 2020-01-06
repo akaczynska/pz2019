@@ -107,7 +107,7 @@
         android:layout_marginLeft="203dp"
         android:layout_marginTop="247dp"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="numberDecimal"
         android:text="500" />
 
     <EditText
@@ -121,7 +121,7 @@
         android:layout_marginLeft="26dp"
         android:layout_marginTop="248dp"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="numberDecimal"
         android:text="1000" />
 
     <TextView
@@ -167,7 +167,7 @@
         android:layout_marginLeft="18dp"
         android:layout_marginTop="376dp"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="number"
         android:text="2" />
 
     <TextView
