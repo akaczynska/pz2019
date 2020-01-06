@@ -1,16 +1,17 @@
 package com.example.auctionapp.Model;
 
 public class ProductInformation {
+    private int productId;
     private String productName;
     private String productPrice;
     private String productTime;
     private String productDescription;
 
-    public ProductInformation(String productName, String productPrice, String productTime, String imageURL) {
+    public ProductInformation(String productName, String productPrice, String productTime, String productDescription) {
         this.productName = productName;
         this.productPrice = productPrice;
         this.productTime = productTime;
-        this.productDescription = imageURL;
+        this.productDescription = productDescription;
     }
     public ProductInformation(){
         productName = "Empty";
