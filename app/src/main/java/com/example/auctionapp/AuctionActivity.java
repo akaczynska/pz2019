@@ -7,11 +7,14 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.example.auctionapp.Fragments.BidFragment;
 import com.example.auctionapp.Fragments.SellFragment;
+import com.example.auctionapp.Model.ProductInformation;
 import com.google.android.material.navigation.NavigationView;
 
 public class AuctionActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -19,12 +22,19 @@ public class AuctionActivity extends AppCompatActivity implements NavigationView
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     private Toolbar toolbar;
+    private TextView textViewNick;
+    public ProductInformation productInformation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_auction);
 
+        Intent intent = getIntent();
+        String login = intent.getStringExtra(LoginActivity.EXTRA_LOGIN);
+
+        textViewNick = (TextView)findViewById(R.id.textViewNick);
+        textViewNick.setText(login);
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

@@ -41,7 +41,7 @@ public class RegisterActivity extends AppCompatActivity {
     public void openAuction (View view){
         if(checkNick() && checkPassword() && checkCorrectPassword()) {
             addUserToDatabase();
-            startActivity(new Intent(this, AuctionActivity.class));
+            startActivity(new Intent(this, LoginActivity.class));
         }
     }
 
