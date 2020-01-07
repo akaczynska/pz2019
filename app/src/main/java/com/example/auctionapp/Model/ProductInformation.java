@@ -1,28 +1,32 @@
 package com.example.auctionapp.Model;
 
+import java.util.Date;
+
 public class ProductInformation {
     private int productId;
     private String name;
     private String description;
     private float starting_price;
     private float finish_price;
+    private Date start_date;
+    private Date finish_date;
     private boolean sold;
     private int id_category;
-    private String seller_login;
-    private String buyer_login;
-    private String time;
+    private int seller_login;
+    private int buyer_login;
 
-    public ProductInformation(int productId, String name, String description, float starting_price, float finish_price, boolean sold, int id_category, String seller_login, String buyer_login, String time) {
+    public ProductInformation(int productId, String name, String description, float starting_price, float finish_price, Date start_date, Date finish_date, boolean sold, int id_category, int seller_login, int buyer_login) {
         this.productId = productId;
         this.name = name;
         this.description = description;
         this.starting_price = starting_price;
         this.finish_price = finish_price;
+        this.start_date = start_date;
+        this.finish_date = finish_date;
         this.sold = sold;
         this.id_category = id_category;
         this.seller_login = seller_login;
         this.buyer_login = buyer_login;
-        this.time = time;
     }
 
     public int getProductId() {
@@ -65,6 +69,22 @@ public class ProductInformation {
         this.finish_price = finish_price;
     }
 
+    public Date getStart_date() {
+        return start_date;
+    }
+
+    public void setStart_date(Date start_date) {
+        this.start_date = start_date;
+    }
+
+    public Date getFinish_date() {
+        return finish_date;
+    }
+
+    public void setFinish_date(Date finish_date) {
+        this.finish_date = finish_date;
+    }
+
     public boolean isSold() {
         return sold;
     }
@@ -81,27 +101,20 @@ public class ProductInformation {
         this.id_category = id_category;
     }
 
-    public String getSeller_login() {
+    public int getSeller_login() {
         return seller_login;
     }
 
-    public void setSeller_login(String seller_login) {
+    public void setSeller_login(int seller_login) {
         this.seller_login = seller_login;
     }
 
-    public String getBuyer_login() {
+    public int getBuyer_login() {
         return buyer_login;
     }
 
-    public void setBuyer_login(String buyer_login) {
+    public void setBuyer_login(int buyer_login) {
         this.buyer_login = buyer_login;
     }
 
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
-    }
 }

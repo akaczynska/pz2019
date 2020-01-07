@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">AuctionApp</string>
-    <string name="image_product">Zdjecie Produktu</string>
-    <string name="product_name">Nazwa Produktu</string>
-    <string name="product_price">Cena</string>
-    <string name="product_time">Czas</string>
-    <string name="auction">Licytuj</string>
+    <string name="image_product">Product Image</string>
+    <string name="product_name">Product Name</string>
+    <string name="product_price">Price</string>
+    <string name="product_time">Finish Date</string>
+    <string name="auction">Bid</string>
     <string name="navigation_draver_close">Close Navigation Draver</string>
     <string name="navigation_draver_open">Open Navigation Draver</string>
 

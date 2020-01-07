@@ -9,7 +9,9 @@ import android.view.ViewGroup;
 import com.example.auctionapp.Model.ProductInformation;
 import com.example.auctionapp.R;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -33,9 +35,11 @@ public class ProductAdapter  extends RecyclerView.Adapter<ProductHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ProductHolder holder, int position) {
-           /* holder.productName.setText(listProducts.get(position).getProductName());
-            holder.productPrice.setText(listProducts.get(position).getProductPrice());
-            holder.productTime.setText(listProducts.get(position).getProductTime());*/
+            holder.productName.setText(listProducts.get(position).getName());
+            Date date = listProducts.get(position).getFinish_date();
+            holder.productTime.setText(date.toString());
+            //holder.productPrice.setText(listProducts.get(position).getStarting_price());
+
     }
 
     @Override
