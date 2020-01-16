@@ -6,25 +6,45 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import com.example.auctionapp.Fragments.BidFragment;
 import com.example.auctionapp.Fragments.SellFragment;
+import com.example.auctionapp.Model.ProductInformation;
 import com.google.android.material.navigation.NavigationView;
+
 
 public class AuctionActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     private Toolbar toolbar;
+    private TextView textViewNick;
+    public ProductInformation productInformation;
+    public final static String EXTRA_LOGIN = "";
+    Fragment sellfragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_auction);
 
+        Intent intent = getIntent();
+        String login = intent.getStringExtra(LoginActivity.EXTRA_LOGIN);
+
+        Bundle bundle = new Bundle();
+        bundle.putString("EXTRA_LOGIN",login);
+        sellfragment = new SellFragment();
+        sellfragment.setArguments(bundle);
+
+        textViewNick = (TextView)findViewById(R.id.textViewNick);
+        textViewNick.setText(login);
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -61,9 +81,10 @@ public class AuctionActivity extends AppCompatActivity implements NavigationView
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
 
+
             case R.id.nav_sell:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new SellFragment()).commit();
+                        sellfragment).commit();
                 break;
 
             case R.id.nav_bid:
@@ -76,5 +97,10 @@ public class AuctionActivity extends AppCompatActivity implements NavigationView
             drawerLayout.closeDrawer(GravityCompat.START);
             return true;
 
+    }
+
+
+    public void openHistory (View view){
+        startActivity(new Intent(this, HistoryActivity.class));
     }
 }
