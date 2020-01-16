@@ -35,6 +35,7 @@ public class BidFragment extends Fragment {
     private ConnectionClass connectionClass;
     private Connection con;
     private Context context;
+    private int    id_product;
 
     @Nullable
     @Override
@@ -61,7 +62,7 @@ public class BidFragment extends Fragment {
         Date starting_date, finish_date;
         float  price, final_price;
         boolean sold;
-        int    id_product, id_category, id_seller, id_buyer;
+        int    id_category, id_seller, id_buyer;
 
        try{
            String querySub = "select * from dbo.Products;";
