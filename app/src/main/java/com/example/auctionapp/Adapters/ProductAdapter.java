@@ -38,6 +38,12 @@ public class ProductAdapter  extends RecyclerView.Adapter<ProductHolder> {
             holder.productName.setText(listProducts.get(position).getName());
             Date date = listProducts.get(position).getFinish_date();
             holder.productTime.setText(date.toString());
+            holder.buttonHistory.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    
+                }
+            });
             //holder.productPrice.setText(listProducts.get(position).getStarting_price());
 
     }
