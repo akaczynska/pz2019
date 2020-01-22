@@ -24,11 +24,7 @@ public class HistoryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_auction);
-        Intent intent = getIntent();
 
-
-        Bundle args = getArguments();
-        login = args.getString("EXTRA_LOGIN");
 
         connectionClass = new ConnectionClass();
         con = connectionClass.getConnection();
