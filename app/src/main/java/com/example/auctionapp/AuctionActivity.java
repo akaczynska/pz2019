@@ -20,6 +20,7 @@ import com.example.auctionapp.Model.ProductInformation;
 import com.google.android.material.navigation.NavigationView;
 
 
+
 public class AuctionActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private DrawerLayout drawerLayout;
@@ -28,7 +29,6 @@ public class AuctionActivity extends AppCompatActivity implements NavigationView
     private TextView textViewNick;
     public ProductInformation productInformation;
     public final static String EXTRA_LOGIN = "";
-    public final static String EXTRA_PRODUCTID = "";
     Fragment sellfragment;
     String productID;
     @Override
@@ -102,9 +102,16 @@ public class AuctionActivity extends AppCompatActivity implements NavigationView
     }
 
 
-    public void openHistory (View view){
+    @Override public void onBackPressed() {
+        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.nav_view);
+        if (!(fragment instanceof IOnBackPressed) || !((IOnBackPressed) fragment).onBackPressed()) {
+            super.onBackPressed();
+        }
+    }
+
+   public void openHistory (View view){
         Intent intent = new Intent (this, HistoryActivity.class);
-        intent.putExtra(EXTRA_PRODUCTID,productID);
+        //intent.putExtra(EXTRA_PRODUCTID,productID);
         startActivity(intent);
         //startActivity(new Intent(this, HistoryActivity.class));
     }

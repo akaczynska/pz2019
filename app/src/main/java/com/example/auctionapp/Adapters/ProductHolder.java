@@ -17,6 +17,7 @@ public class ProductHolder extends RecyclerView.ViewHolder {
     TextView productPrice;
     TextView productTime;
     Button buttonHistory;
+    Button buttonBid;
 
     public ProductHolder(@NonNull View itemView){
         super(itemView);
@@ -25,6 +26,7 @@ public class ProductHolder extends RecyclerView.ViewHolder {
         this.productPrice = itemView.findViewById(R.id.textViewPrice);
         this.productTime = itemView.findViewById(R.id.textViewTime);
         this.buttonHistory = itemView.findViewById(R.id.buttonHistory);
+        this.buttonBid = itemView.findViewById(R.id.buttonAuction);
     }
 
 }

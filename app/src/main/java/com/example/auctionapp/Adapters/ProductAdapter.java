@@ -4,8 +4,9 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
-
+import com.example.auctionapp.AuctionActivity;
 import com.example.auctionapp.Model.ProductInformation;
 import com.example.auctionapp.R;
 
@@ -34,18 +35,25 @@ public class ProductAdapter  extends RecyclerView.Adapter<ProductHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ProductHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ProductHolder holder, final int position) {
             holder.productName.setText(listProducts.get(position).getName());
             Date date = listProducts.get(position).getFinish_date();
             holder.productTime.setText(date.toString());
             holder.buttonHistory.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    
+                    Toast.makeText(view.getContext(),"History Clicked, productID: "+listProducts.get(position).getProductId(), Toast.LENGTH_LONG).show();
+
                 }
             });
             //holder.productPrice.setText(listProducts.get(position).getStarting_price());
+            holder.buttonBid.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(view.getContext(),"Bid Clicked, productID: "+listProducts.get(position).getProductId(), Toast.LENGTH_LONG).show();
 
+                }
+            });
     }
 
     @Override
