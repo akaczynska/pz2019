@@ -41,6 +41,7 @@ public class LoginActivity extends AppCompatActivity {
             Intent intent = new Intent(this, AuctionActivity.class);
             intent.putExtra(EXTRA_LOGIN, login);
             startActivity(intent);
+            finish();
         }
     }
 
@@ -70,7 +71,7 @@ public class LoginActivity extends AppCompatActivity {
                     {
                         loginStatus=true;
                         Toast.makeText(this,"Login successful", Toast.LENGTH_LONG).show();
-                        con.close();
+                        //con.close();
                     }
                     else if(rs.getInt("Status")==1)
                         Toast.makeText(this,"Login unsuccessful \n Invalid login or password", Toast.LENGTH_LONG).show();

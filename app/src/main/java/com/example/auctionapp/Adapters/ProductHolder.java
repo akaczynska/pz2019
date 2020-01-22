@@ -1,6 +1,7 @@
 package com.example.auctionapp.Adapters;
 
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -15,6 +16,8 @@ public class ProductHolder extends RecyclerView.ViewHolder {
     TextView productName;
     TextView productPrice;
     TextView productTime;
+    Button buttonHistory;
+    Button buttonBid;
 
     public ProductHolder(@NonNull View itemView){
         super(itemView);
@@ -22,6 +25,8 @@ public class ProductHolder extends RecyclerView.ViewHolder {
         this.productName = itemView.findViewById(R.id.textViewProduct);
         this.productPrice = itemView.findViewById(R.id.textViewPrice);
         this.productTime = itemView.findViewById(R.id.textViewTime);
+        this.buttonHistory = itemView.findViewById(R.id.buttonHistory);
+        this.buttonBid = itemView.findViewById(R.id.buttonAuction);
     }
 
 }

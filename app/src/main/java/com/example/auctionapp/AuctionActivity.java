@@ -20,6 +20,7 @@ import com.example.auctionapp.Model.ProductInformation;
 import com.google.android.material.navigation.NavigationView;
 
 
+
 public class AuctionActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private DrawerLayout drawerLayout;
@@ -29,7 +30,7 @@ public class AuctionActivity extends AppCompatActivity implements NavigationView
     public ProductInformation productInformation;
     public final static String EXTRA_LOGIN = "";
     Fragment sellfragment;
-
+    String productID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +38,7 @@ public class AuctionActivity extends AppCompatActivity implements NavigationView
 
         Intent intent = getIntent();
         String login = intent.getStringExtra(LoginActivity.EXTRA_LOGIN);
+
 
         Bundle bundle = new Bundle();
         bundle.putString("EXTRA_LOGIN",login);
@@ -100,7 +102,17 @@ public class AuctionActivity extends AppCompatActivity implements NavigationView
     }
 
 
-    public void openHistory (View view){
-        startActivity(new Intent(this, HistoryActivity.class));
+    @Override public void onBackPressed() {
+        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.nav_view);
+        if (!(fragment instanceof IOnBackPressed) || !((IOnBackPressed) fragment).onBackPressed()) {
+            super.onBackPressed();
+        }
+    }
+
+   public void openHistory (View view){
+        Intent intent = new Intent (this, HistoryActivity.class);
+        //intent.putExtra(EXTRA_PRODUCTID,productID);
+        startActivity(intent);
+        //startActivity(new Intent(this, HistoryActivity.class));
     }
 }

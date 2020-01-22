@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.auctionapp.ConnectionClass;
+import com.example.auctionapp.IOnBackPressed;
 import com.example.auctionapp.LoginActivity;
 import com.example.auctionapp.Model.ProductInformation;
 import com.example.auctionapp.R;
@@ -38,7 +39,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-public class SellFragment extends Fragment implements View.OnClickListener {
+public class SellFragment extends Fragment implements View.OnClickListener, IOnBackPressed {
 
     private Context context;
 
@@ -176,8 +177,14 @@ public class SellFragment extends Fragment implements View.OnClickListener {
                     if(rs.next())
                     {
                             Toast.makeText(context,"Adding product successful", Toast.LENGTH_LONG).show();
-                            Intent intent = new Intent(getActivity(), BidFragment.class);
-                            startActivity(intent);
+                            //Intent intent = new Intent(getActivity(), BidFragment.class);
+                            //startActivity(intent);
+                            //getActivity().finish();
+                            //getFragmentManager().getBackStackEntryCount();
+                            getFragmentManager().beginTransaction().remove(this).commit();
+                            getFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                                    new BidFragment()).commit();
+                        //navigationView.setCheckedItem(R.id.nav_bid);
                     }
                     else
                     {
@@ -310,9 +317,23 @@ public class SellFragment extends Fragment implements View.OnClickListener {
         if(v==buttonPut){
             if(selectedCategory && selectedSubcategory){
                 putProductForAuction();
+                //getActivity().getFragmentManager().popBackStack();
             }
         }
     }
 
+    @Override
+    public boolean onBackPressed() {
+
+        int count = getFragmentManager().getBackStackEntryCount();
+
+        if (count == 0) {
+            return true;
+            //additional code
+        } else {
+            return false;
+        }
+
+    }
 
 }
