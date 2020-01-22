@@ -47,7 +47,7 @@
         android:layout_toRightOf="@+id/textViewProduct"
         android:text="@string/product_price"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="#CAA119"
+        android:textColor="@color/gold"
         android:textSize="20sp" />
 
     <TextView
