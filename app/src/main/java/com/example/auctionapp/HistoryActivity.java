@@ -44,13 +44,16 @@ public class HistoryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
+        context = getApplicationContext();
         Bundle b = getIntent().getExtras();
+        int in = b.getInt("PRODUCT_ID");
+        Toast.makeText(context, "ID:"+in, Toast.LENGTH_SHORT).show();
         connectionClass = new ConnectionClass();
         context = getApplicationContext();
         con = connectionClass.getConnection();
         if (b != null) {
             try {
-                String querySub = "select * from dbo.PriceHistory where"+b.getInt("PRODUCT_ID") + "=productID;";
+                String querySub = "select * from dbo.PriceHistory where product_ID='"+b.getInt("PRODUCT_ID") + "';";
                 Statement stmt = con.createStatement();
                 ResultSet rs = stmt.executeQuery(querySub);
                 int i = 0;
