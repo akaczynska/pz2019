@@ -5,57 +5,72 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.auctionapp.Model.ProductInformation;
 
+import net.sourceforge.jtds.jdbc.DateTime;
+
+import java.math.BigDecimal;
+import java.sql.Array;
 import java.sql.Connection;
 import java.util.ArrayList;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.Date;
+
+
+import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
+import com.github.mikephil.charting.utils.ColorTemplate;
+
 
 public class HistoryActivity extends AppCompatActivity {
 
     private ConnectionClass connectionClass;
     private Connection con;
     private Context context;
-    private ArrayList priceHistory = new ArrayList();
-    public final static String EXTRA_PRODUCTID = "";
+    private ArrayList<String> labels = new ArrayList<String>();
+    //private ArrayList<BigDecimal> entries = new ArrayList<>();
+    private ArrayList<BarEntry> entries = new ArrayList<BarEntry>();
+    private Date change_date;
+    private float price;
+    //public final static String EXTRA_PRODUCTID = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_auction);
-
-
+        setContentView(R.layout.activity_history);
+        Bundle b = getIntent().getExtras();
         connectionClass = new ConnectionClass();
         con = connectionClass.getConnection();
-/*
-try{
-           String querySub = "select * from dbo.PriceHistory where id=productID;";
-           Statement stmt = con.createStatement();
-           ResultSet rs = stmt.executeQuery(querySub);
-           while (rs.next()) {
-               name = rs.getString("name");
-               description = rs.getString("description");
-               starting_date = rs.getDate("start_date");
-               finish_date = rs.getDate("finish_date");
-               price = rs.getFloat("price");
-               final_price = rs.getFloat("price");
-               id_product = rs.getInt("id");
-               sold = rs.getBoolean("sold");
-               id_category = rs.getInt("id_category");
-               id_seller = rs.getInt("seller_login");
-               id_buyer = rs.getInt("buyer_login");
-               ProductInformation productInformation = new ProductInformation(id_product,name,description,price,final_price,starting_date, finish_date, sold, id_category, id_seller, id_buyer);
-               listProducts.add(productInformation);
-           }
+        if (b != null) {
+            try {
+                String querySub = "select * from dbo.PriceHistory where"+b.getInt("PRODUCT_ID") + "=productID;";
+                Statement stmt = con.createStatement();
+                ResultSet rs = stmt.executeQuery(querySub);
+                int i = 0;
+                while (rs.next()) {
+                    change_date = rs.getDate("change_date");
+                    price = rs.getBigDecimal("price").floatValue();
+                    labels.add(change_date.toString());
+                    i++;
+                    BarEntry entry = new BarEntry(Float.valueOf(price), i);
+                    entries.add(entry);
+                }
 
-       }
-       catch (Exception e){
-           Toast.makeText(context,e.getMessage(), Toast.LENGTH_LONG).show();
-       }
-* */
+            } catch (Exception e) {
+                Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+            }
 
-
+            BarChart chart = findViewById(R.id.barchart);
+            BarDataSet bardataset = new BarDataSet(entries, "Price change over time");
+            BarData data = new BarData(bardataset);
+            bardataset.setColors(ColorTemplate.COLORFUL_COLORS);
+            chart.setData(data);
+        }
     }
-
 }
