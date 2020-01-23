@@ -94,7 +94,7 @@ public class ProductAdapter  extends RecyclerView.Adapter<ProductHolder> {
                 @Override
                 public void onClick(View view) {
                     Bundle b = new Bundle();
-                    b.putInt("PRODUCT_ID",position);
+                    b.putInt("PRODUCT_ID",listProducts.get(position).getProductId());
                     Toast.makeText(view.getContext(),"History Clicked, productID: "+listProducts.get(position).getProductId(), Toast.LENGTH_LONG).show();
                     Intent intent =  new Intent (context, HistoryActivity.class);
                     intent.putExtras(b);
