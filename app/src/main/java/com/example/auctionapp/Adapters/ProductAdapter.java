@@ -1,12 +1,15 @@
 package com.example.auctionapp.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.auctionapp.AuctionActivity;
+import com.example.auctionapp.HistoryActivity;
 import com.example.auctionapp.Model.ProductInformation;
 import com.example.auctionapp.R;
 
@@ -16,6 +19,9 @@ import java.util.Date;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import static androidx.core.content.ContextCompat.startActivity;
+
 public class ProductAdapter  extends RecyclerView.Adapter<ProductHolder> {
 
     private Context context;
@@ -42,7 +48,12 @@ public class ProductAdapter  extends RecyclerView.Adapter<ProductHolder> {
             holder.buttonHistory.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    Bundle b = new Bundle();
+                    b.putInt("PRODUCT_ID",position);
                     Toast.makeText(view.getContext(),"History Clicked, productID: "+listProducts.get(position).getProductId(), Toast.LENGTH_LONG).show();
+                    Intent intent =  new Intent (context, HistoryActivity.class);
+                    intent.putExtras(b);
+                    context.startActivity(intent);
 
                 }
             });
