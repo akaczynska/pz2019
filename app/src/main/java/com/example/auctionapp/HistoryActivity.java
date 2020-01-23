@@ -46,6 +46,7 @@ public class HistoryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_history);
         Bundle b = getIntent().getExtras();
         connectionClass = new ConnectionClass();
+        context = getApplicationContext();
         con = connectionClass.getConnection();
         if (b != null) {
             try {
