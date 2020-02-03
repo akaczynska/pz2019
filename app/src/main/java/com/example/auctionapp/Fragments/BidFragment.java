@@ -36,6 +36,7 @@ public class BidFragment extends Fragment {
     private Connection con;
     private Context context;
     private int    id_product;
+    private String login;
 
     @Nullable
     @Override
@@ -50,8 +51,13 @@ public class BidFragment extends Fragment {
         connectionClass = new ConnectionClass();
         con = connectionClass.getConnection();
 
+        Bundle args = getArguments();
+        login = args.getString("EXTRA_LOGIN");
+
         context = getContext();
         readProducts();
+
+
 
         return view;
     }
@@ -89,8 +95,7 @@ public class BidFragment extends Fragment {
            Toast.makeText(context,e.getMessage(), Toast.LENGTH_LONG).show();
        }
 
-
-        productAdapter = new ProductAdapter(getContext(),listProducts);
+        productAdapter = new ProductAdapter(getContext(),listProducts, login);
         recyclerView.setAdapter(productAdapter);
     }
 }

@@ -38,11 +38,11 @@
     <TextView
         android:id="@+id/textViewPrice"
         android:layout_width="wrap_content"
-        android:layout_height="41dp"
+        android:layout_height="53dp"
         android:layout_alignParentTop="true"
         android:layout_marginStart="6dp"
         android:layout_marginLeft="6dp"
-        android:layout_marginTop="19dp"
+        android:layout_marginTop="18dp"
         android:layout_toEndOf="@+id/textViewProduct"
         android:layout_toRightOf="@+id/textViewProduct"
         android:text="@string/product_price"

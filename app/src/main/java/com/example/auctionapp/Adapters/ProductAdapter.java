@@ -27,6 +27,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.TimeZone;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -40,13 +41,16 @@ public class ProductAdapter  extends RecyclerView.Adapter<ProductHolder> {
 
     private Context context;
     private ArrayList<ProductInformation> listProducts;
+    private String nick;
     ConnectionClass connectionClass;
     Connection con;
+    int id;
 
 
-    public ProductAdapter(Context context, ArrayList<ProductInformation> listProducts) {
+    public ProductAdapter(Context context, ArrayList<ProductInformation> listProducts, String nick) {
         this.context = context;
         this.listProducts = listProducts;
+        this.nick = nick;
     }
 
     @NonNull
@@ -58,13 +62,15 @@ public class ProductAdapter  extends RecyclerView.Adapter<ProductHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ProductHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final ProductHolder holder, final int position) {
             holder.productName.setText(listProducts.get(position).getName());
             Date finish_date = listProducts.get(position).getFinish_date();
             connectionClass = new ConnectionClass();
             con = connectionClass.getConnection();
-            //time out when finish_date is passed
-//            Date date;
+           //Toast.makeText(context, (CharSequence) finish_date, Toast.LENGTH_SHORT).show();
+
+            //Date currentTime = Calendar.getInstance().getTime();
+
 //
 //                SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 //            Calendar c = Calendar.getInstance();
@@ -80,15 +86,37 @@ public class ProductAdapter  extends RecyclerView.Adapter<ProductHolder> {
 //                e.printStackTrace();
 //            }
 //
-//            if(finish_date.getTime()<date.getTime()){
+//                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
+//                dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
+//                Date today = Calendar.getInstance().getTime();
+//                dateFormat.format(today);
+//
+//
+//
+//            if(today.after(finish_date)){
 //                holder.productPrice.setText("Time out!");
 //            }
             holder.productTime.setText(finish_date.toString());
 
 
             if(listProducts.get(position).isSold()){
-                holder.productPrice.setText("Sold");
                 holder.buttonBid.setVisibility(View.GONE);
+                try {
+                    if (con == null) {
+                        Toast.makeText(context, "Check your internet access!", Toast.LENGTH_SHORT).show();
+                    } else {
+                        String query= "select AccountName from [dbo].SecurityAccounts where AccountID="+listProducts.get(position).getBuyer_login()+";";
+                        Statement stmt = con.createStatement();
+                        ResultSet rs = stmt.executeQuery(query);
+                        rs.next();
+                        holder.productPrice.setText("Bought by "+rs.getString("AccountName"));
+
+                    }
+                }
+                catch (Exception e){
+                    Toast.makeText(context,e.getMessage(), Toast.LENGTH_LONG).show();
+                }
+
             }
             holder.buttonHistory.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -106,21 +134,29 @@ public class ProductAdapter  extends RecyclerView.Adapter<ProductHolder> {
             holder.buttonBid.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(view.getContext(),"Bid Clicked, productID: "+listProducts.get(position).getProductId(), Toast.LENGTH_LONG).show();
+                   // Toast.makeText(view.getContext(),"Bid Clicked, productID: "+listProducts.get(position).getProductId(), Toast.LENGTH_LONG).show();
 
                     try {
                         if (con == null) {
                             Toast.makeText(context, "Check your internet access!", Toast.LENGTH_SHORT).show();
                         } else {
-                            String query = "update [dbo].[Products] set sold=1 where id=" + listProducts.get(position).getProductId() + ";";
+                            String query_id = "select AccountID from [dbo].SecurityAccounts where AccountName='a';";
                             Statement stmt = con.createStatement();
-                            ResultSet rs = stmt.executeQuery(query);
+                            ResultSet rs = stmt.executeQuery(query_id);
+                            rs.next();
+                            id=rs.getInt("AccountID");
+                            Toast.makeText(context,id+" "+nick, Toast.LENGTH_LONG).show();
+                            holder.productPrice.setText("Bought by "+nick);
+                            String query = "update [dbo].[Products] set sold=1, buyer_login="+id+" where id=" + listProducts.get(position).getProductId() + ";";
+                            holder.buttonBid.setVisibility(View.GONE);
+                            ResultSet rs2 = stmt.executeQuery(query);
+                            rs2.next();
 
                         }
                     }
                     catch (Exception e)
                     {
-                        Toast.makeText(context,e.getMessage(), Toast.LENGTH_LONG).show();
+                       //Toast.makeText(context,e.getMessage(), Toast.LENGTH_LONG).show();
                     }
 
 
