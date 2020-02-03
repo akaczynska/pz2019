@@ -109,10 +109,10 @@ public class AuctionActivity extends AppCompatActivity implements NavigationView
         }
     }
 
-   public void openHistory (View view){
+   /*public void openHistory (View view){
         Intent intent = new Intent (this, HistoryActivity.class);
         //intent.putExtra(EXTRA_PRODUCTID,productID);
         startActivity(intent);
         //startActivity(new Intent(this, HistoryActivity.class));
-    }
+    }*/
 }
