@@ -26,29 +26,31 @@
         android:id="@+id/textViewProduct"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="6dp"
-        android:layout_marginLeft="6dp"
-        android:layout_marginTop="10dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="4dp"
         android:layout_toEndOf="@+id/product_image"
         android:layout_toRightOf="@+id/product_image"
         android:text="@string/product_name"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textSize="20dp" />
 
+
     <TextView
         android:id="@+id/textViewPrice"
-        android:layout_width="wrap_content"
-        android:layout_height="53dp"
+        android:layout_width="149dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="6dp"
-        android:layout_marginLeft="6dp"
-        android:layout_marginTop="18dp"
-        android:layout_toEndOf="@+id/textViewProduct"
-        android:layout_toRightOf="@+id/textViewProduct"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="29dp"
+        android:layout_toEndOf="@+id/product_image"
+        android:layout_toRightOf="@+id/product_image"
         android:text="@string/product_price"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="@color/gold"
-        android:textSize="20sp" />
+        android:textSize="18dp" />
 
     <TextView
         android:id="@+id/textViewTime"
@@ -57,7 +59,7 @@
         android:layout_below="@+id/textViewProduct"
         android:layout_marginStart="84dp"
         android:layout_marginLeft="84dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="31dp"
         android:layout_toEndOf="@+id/product_image"
         android:layout_toRightOf="@+id/product_image"
         android:text="@string/product_time"
@@ -68,14 +70,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textViewProduct"
-        android:layout_marginStart="6dp"
-        android:layout_marginLeft="6dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginLeft="3dp"
+        android:layout_marginTop="25dp"
         android:layout_toEndOf="@+id/product_image"
         android:layout_toRightOf="@+id/product_image"
         android:text="@string/product_time"
         android:textSize="15dp" />
-
 
     <Button
         android:id="@+id/buttonAuction"
