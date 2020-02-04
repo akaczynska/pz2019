@@ -8,6 +8,7 @@ public class ProductInformation {
     private String description;
     private float starting_price;
     private float finish_price;
+    private float price;
     private Date start_date;
     private Date finish_date;
     private boolean sold;
@@ -15,10 +16,11 @@ public class ProductInformation {
     private int seller_login;
     private int buyer_login;
 
-    public ProductInformation(int productId, String name, String description, float starting_price, float finish_price, Date start_date, Date finish_date, boolean sold, int id_category, int seller_login, int buyer_login) {
+    public ProductInformation(int productId, String name, String description, float price, float starting_price, float finish_price, Date start_date, Date finish_date, boolean sold, int id_category, int seller_login, int buyer_login) {
         this.productId = productId;
         this.name = name;
         this.description = description;
+        this.price=price;
         this.starting_price = starting_price;
         this.finish_price = finish_price;
         this.start_date = start_date;
@@ -53,13 +55,13 @@ public class ProductInformation {
         this.description = description;
     }
 
-    public float getStarting_price() {
-        return starting_price;
-    }
+    public float getStarting_price() { return starting_price;}
 
-    public void setStarting_price(float starting_price) {
-        this.starting_price = starting_price;
-    }
+    public void setStarting_price(float starting_price) { this.starting_price = starting_price; }
+
+    public float getPrice() { return price;}
+
+    public void setPrice(float price) { this.price = price; }
 
     public float getFinish_price() {
         return finish_price;
