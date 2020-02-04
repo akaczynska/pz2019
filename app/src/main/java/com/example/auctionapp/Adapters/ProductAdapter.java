@@ -1,5 +1,6 @@
 package com.example.auctionapp.Adapters;
 
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
 import android.location.Location;
@@ -23,6 +24,9 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.text.DateFormat;
+
+import java.text.ParseException;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -30,11 +34,18 @@ import java.util.Date;
 import java.util.TimeZone;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import static androidx.core.content.ContextCompat.startActivity;
+
 public class ProductAdapter  extends RecyclerView.Adapter<ProductHolder> {
 
     private Context context;
     private ArrayList<ProductInformation> listProducts;
+
     private String nick;
     ConnectionClass connectionClass;
     Connection con;
@@ -60,13 +71,14 @@ public class ProductAdapter  extends RecyclerView.Adapter<ProductHolder> {
     public void onBindViewHolder(@NonNull final ProductHolder holder, final int position) {
             holder.productName.setText(listProducts.get(position).getName());
             Date finish_date = listProducts.get(position).getFinish_date();
+            holder.productPrice.setText(String.valueOf(listProducts.get(position).getPrice()));
             connectionClass = new ConnectionClass();
             con = connectionClass.getConnection();
-           //Toast.makeText(context, (CharSequence) finish_date, Toast.LENGTH_SHORT).show();
 
-            //Date currentTime = Calendar.getInstance().getTime();
-
-//            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            //time out when finish_date is passed
+//            Date date;
+//
+//                SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 //            Calendar c = Calendar.getInstance();
 //            c.add(Calendar.HOUR, 1);
 //            String current_date = df.format(c.getTime());
@@ -79,6 +91,7 @@ public class ProductAdapter  extends RecyclerView.Adapter<ProductHolder> {
 //            } catch (ParseException e) {
 //                e.printStackTrace();
 //            }
+
 //            Date today = Calendar.getInstance().getTime();
 //            String today_string = df.format(today);
 //            String finish_string = df.format(finish_date);
@@ -110,7 +123,6 @@ public class ProductAdapter  extends RecyclerView.Adapter<ProductHolder> {
                 catch (Exception e){
                     Toast.makeText(context,e.getMessage(), Toast.LENGTH_LONG).show();
                 }
-
             }
             holder.buttonHistory.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -151,6 +163,22 @@ public class ProductAdapter  extends RecyclerView.Adapter<ProductHolder> {
                     catch (Exception e)
                     {
                        //Toast.makeText(context,e.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+
+
+                    try {
+                        if (con == null) {
+                            Toast.makeText(context, "Check your internet access!", Toast.LENGTH_SHORT).show();
+                        } else {
+                            String query = "update [dbo].[Products] set sold=1 where id=" + listProducts.get(position).getProductId() + ";";
+                            Statement stmt = con.createStatement();
+                            ResultSet rs = stmt.executeQuery(query);
+
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        Toast.makeText(context,e.getMessage(), Toast.LENGTH_LONG).show();
                     }
 
 

@@ -66,7 +66,7 @@ public class BidFragment extends Fragment {
 
         String name, description;
         Date starting_date, finish_date;
-        float  price, final_price;
+        float  price, final_price, starting_price;
         boolean sold;
         int    id_category, id_seller, id_buyer;
 
@@ -80,13 +80,14 @@ public class BidFragment extends Fragment {
                starting_date = rs.getDate("start_date");
                finish_date = rs.getDate("finish_date");
                price = rs.getFloat("price");
-               final_price = rs.getFloat("price");
+               final_price = rs.getFloat("finish_price");
+               starting_price = rs.getFloat("starting_price");
                id_product = rs.getInt("id");
                sold = rs.getBoolean("sold");
                id_category = rs.getInt("id_category");
                id_seller = rs.getInt("seller_login");
                id_buyer = rs.getInt("buyer_login");
-               ProductInformation productInformation = new ProductInformation(id_product,name,description,price,final_price,starting_date, finish_date, sold, id_category, id_seller, id_buyer);
+               ProductInformation productInformation = new ProductInformation(id_product,name,description,price,starting_price,final_price,starting_date, finish_date, sold, id_category, id_seller, id_buyer);
                listProducts.add(productInformation);
            }
 
