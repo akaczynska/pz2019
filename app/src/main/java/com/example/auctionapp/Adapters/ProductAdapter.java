@@ -61,8 +61,10 @@ public class ProductAdapter  extends RecyclerView.Adapter<ProductHolder> {
     public void onBindViewHolder(@NonNull ProductHolder holder, final int position) {
             holder.productName.setText(listProducts.get(position).getName());
             Date finish_date = listProducts.get(position).getFinish_date();
+            holder.productPrice.setText(String.valueOf(listProducts.get(position).getPrice()));
             connectionClass = new ConnectionClass();
             con = connectionClass.getConnection();
+
             //time out when finish_date is passed
 //            Date date;
 //

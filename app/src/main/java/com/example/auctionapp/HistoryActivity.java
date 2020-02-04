@@ -18,15 +18,20 @@ import java.util.ArrayList;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.sql.Date;
+import java.util.Date;
 
 
 import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.components.AxisBase;
+import com.github.mikephil.charting.components.Description;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
+import com.github.mikephil.charting.formatter.ValueFormatter;
 
 
 public class HistoryActivity extends AppCompatActivity {
@@ -34,10 +39,10 @@ public class HistoryActivity extends AppCompatActivity {
     private ConnectionClass connectionClass;
     private Connection con;
     private Context context;
-    private ArrayList<String> labels = new ArrayList<String>();
+    private ArrayList<String> labelz = new ArrayList<String>();
     //private ArrayList<BigDecimal> entries = new ArrayList<>();
     private ArrayList<BarEntry> entries = new ArrayList<BarEntry>();
-    private Date change_date;
+    private String change_date;
     private float price;
     //public final static String EXTRA_PRODUCTID = "";
     @Override
@@ -58,11 +63,11 @@ public class HistoryActivity extends AppCompatActivity {
                 ResultSet rs = stmt.executeQuery(querySub);
                 int i = 0;
                 while (rs.next()) {
-                    change_date = rs.getDate("change_date");
+                    change_date = rs.getString("change_date");
                     price = rs.getBigDecimal("price").floatValue();
-                    labels.add(change_date.toString());
+                    labelz.add(change_date.substring(0,19));
                     i++;
-                    BarEntry entry = new BarEntry(Float.valueOf(price), i);
+                    BarEntry entry = new BarEntry(i, Float.valueOf(price));
                     entries.add(entry);
                 }
 
@@ -72,9 +77,30 @@ public class HistoryActivity extends AppCompatActivity {
 
             BarChart chart = findViewById(R.id.barchart);
             BarDataSet bardataset = new BarDataSet(entries, "Price change over time");
-            BarData data = new BarData(bardataset);
+            //bardataset.setAxisDependency(YAxis.AxisDependency.LEFT);
             bardataset.setColors(ColorTemplate.COLORFUL_COLORS);
+            BarData data = new BarData(bardataset);
+            data.setBarWidth(0.9f);
             chart.setData(data);
+            //chart.setFitBars(true);
+            //chart.setNoDataText("No data to display");
+            chart.invalidate();
+            //chart.setDescription(new Description());
+
+            final String [] labels = labelz.toArray(new String[0]);
+
+            ValueFormatter formatter = new ValueFormatter() {
+                @Override
+                public String getAxisLabel(float value, AxisBase axis) {
+                    return labels[(int) value];
+                }
+            };
+            XAxis xAxis = chart.getXAxis();
+            xAxis.setLabelRotationAngle(45);
+            xAxis.setGranularity(5f);
+            xAxis.setValueFormatter(formatter);
+
         }
     }
+
 }
