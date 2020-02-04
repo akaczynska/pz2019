@@ -18,6 +18,8 @@ import java.util.ArrayList;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import java.sql.Date;
 import java.util.Date;
 
 
@@ -26,12 +28,15 @@ import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
+
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
+
 import com.github.mikephil.charting.formatter.ValueFormatter;
+
 
 
 public class HistoryActivity extends AppCompatActivity {
@@ -39,10 +44,12 @@ public class HistoryActivity extends AppCompatActivity {
     private ConnectionClass connectionClass;
     private Connection con;
     private Context context;
+
     private ArrayList<String> labelz = new ArrayList<String>();
     //private ArrayList<BigDecimal> entries = new ArrayList<>();
     private ArrayList<BarEntry> entries = new ArrayList<BarEntry>();
     private String change_date;
+
     private float price;
     //public final static String EXTRA_PRODUCTID = "";
     @Override
@@ -63,6 +70,7 @@ public class HistoryActivity extends AppCompatActivity {
                 ResultSet rs = stmt.executeQuery(querySub);
                 int i = 0;
                 while (rs.next()) {
+
                     change_date = rs.getString("change_date");
                     price = rs.getBigDecimal("price").floatValue();
                     labelz.add(change_date.substring(0,19));
@@ -102,5 +110,4 @@ public class HistoryActivity extends AppCompatActivity {
 
         }
     }
-
 }

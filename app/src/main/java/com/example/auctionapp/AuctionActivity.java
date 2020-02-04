@@ -29,7 +29,7 @@ public class AuctionActivity extends AppCompatActivity implements NavigationView
     private TextView textViewNick;
     public ProductInformation productInformation;
     public final static String EXTRA_LOGIN = "";
-    Fragment sellfragment;
+    Fragment sellfragment, bidfragment;
     String productID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +44,9 @@ public class AuctionActivity extends AppCompatActivity implements NavigationView
         bundle.putString("EXTRA_LOGIN",login);
         sellfragment = new SellFragment();
         sellfragment.setArguments(bundle);
+
+        bidfragment = new BidFragment();
+        bidfragment.setArguments(bundle);
 
         textViewNick = (TextView)findViewById(R.id.textViewNick);
         textViewNick.setText(login);
@@ -62,7 +65,7 @@ public class AuctionActivity extends AppCompatActivity implements NavigationView
         toggle.syncState();
         if(savedInstanceState==null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                    new BidFragment()).commit();
+                    bidfragment).commit();
             navigationView.setCheckedItem(R.id.nav_bid);
         }
 
@@ -91,7 +94,7 @@ public class AuctionActivity extends AppCompatActivity implements NavigationView
 
             case R.id.nav_bid:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new BidFragment()).commit();
+                        bidfragment).commit();
                 break;
         }
 

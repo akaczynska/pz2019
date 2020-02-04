@@ -3,8 +3,10 @@ package com.example.auctionapp.Adapters;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
+import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,11 +24,14 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.text.DateFormat;
+
 import java.text.ParseException;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.TimeZone;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -40,13 +45,18 @@ public class ProductAdapter  extends RecyclerView.Adapter<ProductHolder> {
 
     private Context context;
     private ArrayList<ProductInformation> listProducts;
+
+    private String nick;
     ConnectionClass connectionClass;
     Connection con;
+    int id;
+    Date d1, d2;
 
 
-    public ProductAdapter(Context context, ArrayList<ProductInformation> listProducts) {
+    public ProductAdapter(Context context, ArrayList<ProductInformation> listProducts, String nick) {
         this.context = context;
         this.listProducts = listProducts;
+        this.nick = nick;
     }
 
     @NonNull
@@ -58,7 +68,7 @@ public class ProductAdapter  extends RecyclerView.Adapter<ProductHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ProductHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final ProductHolder holder, final int position) {
             holder.productName.setText(listProducts.get(position).getName());
             Date finish_date = listProducts.get(position).getFinish_date();
             holder.productPrice.setText(String.valueOf(listProducts.get(position).getPrice()));
@@ -81,16 +91,38 @@ public class ProductAdapter  extends RecyclerView.Adapter<ProductHolder> {
 //            } catch (ParseException e) {
 //                e.printStackTrace();
 //            }
-//
-//            if(finish_date.getTime()<date.getTime()){
+
+//            Date today = Calendar.getInstance().getTime();
+//            String today_string = df.format(today);
+//            String finish_string = df.format(finish_date);
+//                try {
+//                    d1 = df.parse(today_string);
+//                    d2 = df.parse(finish_string);
+//                }
+//                catch(Exception e ){}
+//            if(d1.getTime()>d2.getTime()){
 //                holder.productPrice.setText("Time out!");
 //            }
-            holder.productTime.setText(finish_date.toString());
+//            holder.productTime.setText(finish_date.toString());
 
 
             if(listProducts.get(position).isSold()){
-                holder.productPrice.setText("Sold");
                 holder.buttonBid.setVisibility(View.GONE);
+                try {
+                    if (con == null) {
+                        Toast.makeText(context, "Check your internet access!", Toast.LENGTH_SHORT).show();
+                    } else {
+                        String query= "select AccountName from [dbo].SecurityAccounts where AccountID="+listProducts.get(position).getBuyer_login()+";";
+                        Statement stmt = con.createStatement();
+                        ResultSet rs = stmt.executeQuery(query);
+                        rs.next();
+                        holder.productPrice.setText("Bought by "+rs.getString("AccountName"));
+
+                    }
+                }
+                catch (Exception e){
+                    Toast.makeText(context,e.getMessage(), Toast.LENGTH_LONG).show();
+                }
             }
             holder.buttonHistory.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -108,7 +140,31 @@ public class ProductAdapter  extends RecyclerView.Adapter<ProductHolder> {
             holder.buttonBid.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(view.getContext(),"Bid Clicked, productID: "+listProducts.get(position).getProductId(), Toast.LENGTH_LONG).show();
+                   // Toast.makeText(view.getContext(),"Bid Clicked, productID: "+listProducts.get(position).getProductId(), Toast.LENGTH_LONG).show();
+
+                    try {
+                        if (con == null) {
+                            Toast.makeText(context, "Check your internet access!", Toast.LENGTH_SHORT).show();
+                        } else {
+                            String query_id = "select AccountID from [dbo].SecurityAccounts where AccountName='a';";
+                            Statement stmt = con.createStatement();
+                            ResultSet rs = stmt.executeQuery(query_id);
+                            rs.next();
+                            id=rs.getInt("AccountID");
+                            Toast.makeText(context,id+" "+nick, Toast.LENGTH_LONG).show();
+                            holder.productPrice.setText("Bought by "+nick);
+                            String query = "update [dbo].[Products] set sold=1, buyer_login="+id+" where id=" + listProducts.get(position).getProductId() + ";";
+                            holder.buttonBid.setVisibility(View.GONE);
+                            ResultSet rs2 = stmt.executeQuery(query);
+                            rs2.next();
+
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                       //Toast.makeText(context,e.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+
 
                     try {
                         if (con == null) {

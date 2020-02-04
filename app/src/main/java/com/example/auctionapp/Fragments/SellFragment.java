@@ -73,6 +73,7 @@ public class SellFragment extends Fragment implements View.OnClickListener, IOnB
     private String start_date;
     private String finish_date;
 
+    private Fragment bidfragment;
 
     private String login;
     private int user_id;
@@ -102,6 +103,10 @@ public class SellFragment extends Fragment implements View.OnClickListener, IOnB
         //get user id from database
         Bundle args = getArguments();
         login = args.getString("EXTRA_LOGIN");
+        args.putString("EXTRA_LOGIN",login);
+        bidfragment = new BidFragment();
+        bidfragment.setArguments(args);
+
 
         try {
             if (con == null) {
@@ -183,7 +188,7 @@ public class SellFragment extends Fragment implements View.OnClickListener, IOnB
                             //getFragmentManager().getBackStackEntryCount();
                             getFragmentManager().beginTransaction().remove(this).commit();
                             getFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                                    new BidFragment()).commit();
+                                    bidfragment).commit();
                         //navigationView.setCheckedItem(R.id.nav_bid);
                     }
                     else
