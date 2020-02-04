@@ -1,10 +1,11 @@
 package com.example.auctionapp.Adapters;
 
-import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
+import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +23,6 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -30,13 +30,7 @@ import java.util.Date;
 import java.util.TimeZone;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import static androidx.core.content.ContextCompat.startActivity;
-
 public class ProductAdapter  extends RecyclerView.Adapter<ProductHolder> {
 
     private Context context;
@@ -45,6 +39,7 @@ public class ProductAdapter  extends RecyclerView.Adapter<ProductHolder> {
     ConnectionClass connectionClass;
     Connection con;
     int id;
+    Date d1, d2;
 
 
     public ProductAdapter(Context context, ArrayList<ProductInformation> listProducts, String nick) {
@@ -71,8 +66,7 @@ public class ProductAdapter  extends RecyclerView.Adapter<ProductHolder> {
 
             //Date currentTime = Calendar.getInstance().getTime();
 
-//
-//                SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 //            Calendar c = Calendar.getInstance();
 //            c.add(Calendar.HOUR, 1);
 //            String current_date = df.format(c.getTime());
@@ -85,18 +79,18 @@ public class ProductAdapter  extends RecyclerView.Adapter<ProductHolder> {
 //            } catch (ParseException e) {
 //                e.printStackTrace();
 //            }
-//
-//                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
-//                dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
-//                Date today = Calendar.getInstance().getTime();
-//                dateFormat.format(today);
-//
-//
-//
-//            if(today.after(finish_date)){
+//            Date today = Calendar.getInstance().getTime();
+//            String today_string = df.format(today);
+//            String finish_string = df.format(finish_date);
+//                try {
+//                    d1 = df.parse(today_string);
+//                    d2 = df.parse(finish_string);
+//                }
+//                catch(Exception e ){}
+//            if(d1.getTime()>d2.getTime()){
 //                holder.productPrice.setText("Time out!");
 //            }
-            holder.productTime.setText(finish_date.toString());
+//            holder.productTime.setText(finish_date.toString());
 
 
             if(listProducts.get(position).isSold()){
